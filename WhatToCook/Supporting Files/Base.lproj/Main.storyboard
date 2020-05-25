@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Meal View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MealViewController" customModule="WhatToCook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqS-OW-U6C">
+                                <rect key="frame" x="0.0" y="44" width="414" height="738"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DJD-i6-WTv">
+                                        <rect key="frame" x="16" y="16" width="382" height="273.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOs-7c-jPc">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="yPK-9u-glu"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knS-RW-0kw">
+                                                <rect key="frame" x="0.0" y="216" width="42" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="NQX-Yk-RRK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzW-ox-xsb">
+                                                <rect key="frame" x="0.0" y="253" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DJD-i6-WTv" firstAttribute="leading" secondItem="TBM-Xf-WiU" secondAttribute="leading" constant="16" id="5rE-U5-2Jo"/>
+                                    <constraint firstItem="TBM-Xf-WiU" firstAttribute="trailing" secondItem="DJD-i6-WTv" secondAttribute="trailing" constant="16" id="Jgr-MU-rfh"/>
+                                    <constraint firstItem="DJD-i6-WTv" firstAttribute="top" secondItem="kqS-OW-U6C" secondAttribute="top" constant="16" id="Na0-zO-sxa"/>
+                                    <constraint firstAttribute="bottom" secondItem="DJD-i6-WTv" secondAttribute="bottom" constant="16" id="kax-wz-zHg"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="5dd-S5-mOe"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="TBM-Xf-WiU"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jas-Aq-iId" customClass="RoundButton" customModule="WhatToCook" customModuleProvider="target">
+                                <rect key="frame" x="132" y="782" width="150" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="3Ex-Cz-aOp"/>
+                                    <constraint firstAttribute="height" constant="40" id="c5m-gE-ajn"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onNewRandomFoodButtonTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vOs-Tu-Xbn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DJD-i6-WTv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.922705" id="1Ld-dF-Kwj"/>
+                            <constraint firstItem="Jas-Aq-iId" firstAttribute="top" secondItem="kqS-OW-U6C" secondAttribute="bottom" id="Oih-ZO-AUv"/>
+                            <constraint firstItem="Jas-Aq-iId" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d8o-s9-c0w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kqS-OW-U6C" secondAttribute="trailing" id="nC4-1y-0Gd"/>
+                            <constraint firstItem="kqS-OW-U6C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qzf-a0-039"/>
+                            <constraint firstItem="kqS-OW-U6C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="s65-By-ryn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jas-Aq-iId" secondAttribute="bottom" constant="40" id="wdl-3v-ifE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageViewMeal" destination="jOs-7c-jPc" id="cfM-df-FHV"/>
+                        <outlet property="labelInstruction" destination="qzW-ox-xsb" id="UT4-39-KLW"/>
+                        <outlet property="labelTitle" destination="knS-RW-0kw" id="XAF-gc-b0e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,5 +1,14 @@
 WhatToCook is a simple sample app to experiment with a simplified version of TEA architecture.
 
+<p>
+<img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/menu.png" width="150">
+<img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/search.png" width="150">
+<img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/categories.png" width="150">
+<img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/meals.png" width="150">
+<img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/meal.png" width="150">
+</p>
+
+### Architecture
 Instead of having one central store, we have a hierarchy of stores:
 
 <img src="https://github.com/coybit/WhatToCook/raw/master/Images/hierarchy.png">

@@ -31,5 +31,6 @@ The sequence diagram is quite simple:
 2. The store passes the event along with the current state to the reducer
 3. The reducer returns a new state, plus side-effect if there is any
 4. The store asks side-effect handler to handle each side-effect
+5. The store call `on(chage:)` method to notify the subscriber that state has changed
 
 <img src="https://github.com/coybit/WhatToCook/raw/master/Images/flow.png">

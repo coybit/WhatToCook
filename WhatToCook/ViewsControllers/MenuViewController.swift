@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, StoreBasedViewController {
             maker.height.equalTo(300)
         }
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 16

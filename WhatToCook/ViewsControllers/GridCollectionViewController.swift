@@ -33,6 +33,7 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
         }
         
         collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .systemGray6
         collectionView!.register(IngredientCollectionCell.self, forCellWithReuseIdentifier: IngredientCollectionCell.identifier)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(onSearchTap))

@@ -107,7 +107,7 @@ class FoodTableCell: UITableViewCell {
             maker.width.equalTo(self.snp.width).multipliedBy(0.6)
         }
         
-        cardView.backgroundColor = .systemGray6
+        cardView.backgroundColor = .systemGray
         cardView.layer.cornerRadius = 8
         cardView.clipsToBounds = true
         

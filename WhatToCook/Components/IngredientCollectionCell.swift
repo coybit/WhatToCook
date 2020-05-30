@@ -24,8 +24,11 @@ class IngredientCollectionCell: UICollectionViewCell {
         stackView.addArrangedSubview(titleLabel)
         
         stackView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.edges.equalToSuperview().inset(8)
         }
+        
+        self.layer.cornerRadius = 12
+        self.clipsToBounds = true
         
         stackView.axis = .vertical
         stackView.alignment = .center
@@ -39,6 +42,6 @@ class IngredientCollectionCell: UICollectionViewCell {
         iconLabel.text = icon
         titleLabel.text = title
         
-        backgroundColor = selected ? .yellow : .systemGray6
+        backgroundColor = selected ? .systemGray4 : .systemGray
     }
 }

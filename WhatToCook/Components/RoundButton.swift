@@ -12,7 +12,7 @@ class RoundButton: UIButton {
     init() {
         super.init(frame: .zero)
         
-        backgroundColor = UIColor.systemGray6
+        backgroundColor = UIColor.systemGray
         setTitleColor(UIColor.black, for: .normal)
         clipsToBounds = true
         layer.cornerRadius = 8

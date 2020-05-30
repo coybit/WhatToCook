@@ -55,7 +55,7 @@ class MealViewController: UIViewController, StoreBasedViewController {
             maker.height.equalTo(imageViewMeal.snp.width)
         }
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         
         labelTitle.font = .preferredFont(forTextStyle: .title1)
         

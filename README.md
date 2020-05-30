@@ -1,4 +1,4 @@
-WhatToCook is a simple sample app to experiment with a simplified version of TEA architecture.
+WhatToCook is a simple sample app to experiment with a simplified version of Flux architecture.
 
 <p>
 <img src="https://github.com/coybit/WhatToCook/raw/master/Images/shots/menu.png" width="150">

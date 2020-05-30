@@ -11,14 +11,18 @@ import SnapKit
 
 private let reuseIdentifier = "Cell"
 
-class GridCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,  StoreBasedViewController {
+class GridCollectionViewController: UIViewController, UICollectionViewDelegateFlowLayout,  StoreBasedViewController {
 
     var store: StoreFactory.IngredientsStore
     private let layout = UICollectionViewFlowLayout()
+    private let collectionView: UICollectionView!
+    private let searchBar: UISearchBar!
     
     init(store: StoreFactory.IngredientsStore) {
         self.store = store
-        super.init(collectionViewLayout: layout)
+        self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.searchBar = UISearchBar(frame: .zero)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -28,44 +32,75 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+        view.addSubview(collectionView)
+        view.addSubview(searchBar)
+        
+        searchBar.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.top.equalTo(view.snp.topMargin)
+            maker.trailing.equalToSuperview()
         }
         
-        collectionView.backgroundColor = .white
+        collectionView.snp.makeConstraints { maker in
+            maker.leading.equalToSuperview()
+            maker.top.equalTo(searchBar.snp.bottom)
+            maker.bottom.equalToSuperview()
+            maker.trailing.equalToSuperview()
+        }
+        
+        self.view.backgroundColor = .systemGray6
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.backgroundColor = .systemGray6
         collectionView!.register(IngredientCollectionCell.self, forCellWithReuseIdentifier: IngredientCollectionCell.identifier)
         
+        navigationItem.largeTitleDisplayMode = .always
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(onSearchTap))
+
+        searchBar.barStyle = .default
+        searchBar.delegate = self
         
         store.on { state in
             DispatchQueue.main.async {
+                self.title = state.title
                 self.collectionView.reloadData()
             }
         }
         
         store.dispatch(action: .viewDidLoad)
     }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        self.navigationItem.searchController?.searchBar.sizeToFit()
+    }
+}
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension GridCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return store.state.ingredients.count
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return store.state.displayingIngredients.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IngredientCollectionCell.identifier, for: indexPath) as! IngredientCollectionCell
     
-        let ingredient = store.state.ingredients[indexPath.row]
+        let ingredient = store.state.displayingIngredients[indexPath.row]
         cell.set(icon: ingredient.icon, title: ingredient.name, selected: ingredient.selected)
     
         return cell
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         store.dispatch(action: .ingredientDidSelect(indexPath.row))
     }
     
@@ -91,5 +126,11 @@ class GridCollectionViewController: UICollectionViewController, UICollectionView
     @objc
     func onSearchTap(_ sender: Any) {
         store.dispatch(action: .searchDidTap)
+    }
+}
+
+extension GridCollectionViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        store.dispatch(action: .filterDidChange(searchText))
     }
 }

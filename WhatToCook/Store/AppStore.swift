@@ -62,6 +62,7 @@ extension StoreFactory {
                 mealsService: env.mealsService,
                 savedMealsService: env.savedMealsService)
             env.navigationController.setViewControllers([MenuViewController(store: menuStore)], animated: true)
+            env.navigationController.navigationBar.prefersLargeTitles = true
             env.window?.rootViewController = env.navigationController
         }
     }
